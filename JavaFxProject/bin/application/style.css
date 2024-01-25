@@ -1,0 +1,47 @@
+
+.side-btn{
+	-fx-background-color: #79F8B3;
+	-fx-background-radius: 26;
+    
+}
+
+.side-btn:hover{
+	-fx-background-color: #79F8B3;
+	-fx-border-radius: 26;
+	-fx-border-color: black;
+	-fx-border-width:4;
+    
+}
+.side-form{
+	
+-fx-background-image: url('baba.png');
+    -fx-background-size: contain; /* This property makes the background image fit within the AnchorPane dimensions */
+    -fx-background-position: center; /* Centers the background image */
+    -fx-background-repeat: no-repeat; /* Ensures the background image is not repeated */
+
+}
+.text-field{
+
+ 
+
+   -fx-border: none;
+   
+
+   -fx-background-color:#F3F3F3;
+
+}
+.close{
+    -fx-background-color: transparent;
+    -fx-cursor: hand; 
+}
+.close:hover{
+    -fx-background-color: #da3341;
+}
+.hyperlink {
+    -fx-text-fill: black; /* Change the default text color */
+}
+
+/* Visited state */
+.hyperlink:visited {
+    -fx-text-fill: purple; /* Change the text color after clicking */
+}

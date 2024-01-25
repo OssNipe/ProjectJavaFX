@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import java.lang.String?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DashboardController">
+   <children>
+      <AnchorPane fx:id="main_form" prefHeight="600.0" prefWidth="1211.0">
+         <children>
+            <BorderPane layoutX="146.0" layoutY="29.0" prefHeight="600.0" prefWidth="1400.0" styleClass="border-pane" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <top>
+                  <AnchorPane prefHeight="45.0" prefWidth="1100.0" styleClass="semi-top" stylesheets="@dashboardDesign.css" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutX="38.0" layoutY="-69.0" prefHeight="35.0" prefWidth="1100.0" styleClass="top-form" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Button fx:id="close" mnemonicParsing="false" onAction="#close" prefHeight="24.0" prefWidth="50.0" styleClass="close-btn" stylesheets="@dashboardDesign.css" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+                                 <graphic>
+                                    <FontAwesomeIcon glyphName="CLOSE" size="1.2em" />
+                                 </graphic>
+                              </Button>
+                              <Button fx:id="minimize" layoutX="1007.0" layoutY="2.0" mnemonicParsing="false" onAction="#minimize" prefHeight="24.0" prefWidth="41.0" styleClass="minimize-btn" stylesheets="@dashboardDesign.css" AnchorPane.rightAnchor="51.19999999999982" AnchorPane.topAnchor="2.0">
+                                 <graphic>
+                                    <FontAwesomeIcon glyphName="MINUS" size="1.2em" text="" />
+                                 </graphic>
+                              </Button>
+                              <FontAwesomeIcon glyphName="BOOK" layoutX="14.0" layoutY="23.0" size="1.7em" />
+                              <Label layoutX="42.0" layoutY="8.0" text="Gestion de Centre des  Cours de Soutien ">
+                                 <font>
+                                    <Font name="Tahoma" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </top>
+               <left>
+                  <AnchorPane prefHeight="555.0" prefWidth="220.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutX="20.0" layoutY="84.0" prefHeight="555.0" prefWidth="220.0" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Button fx:id="dashboard_btn" layoutY="242.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="38.0" prefWidth="220.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="  Dashboard">
+                                 <graphic>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="DASHBOARD" size="1.8em" text="" />
+                                 </graphic>
+                                 <font>
+                                    <Font name="Poppins Bold" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="coaches_btn" layoutX="3.0" layoutY="302.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="214.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="  Enseignant">
+                                 <graphic>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="USER" size="1.8em" text="" />
+                                 </graphic></Button>
+                              <Button fx:id="members_btn" layoutY="361.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="36.0" prefWidth="219.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="  Etudiants">
+                                 <graphic>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="USERS" size="1.8em" />
+                                 </graphic></Button>
+                              <Button fx:id="logout" layoutX="14.0" layoutY="509.0" mnemonicParsing="false" onAction="#logout" stylesheets="@dashboardDesign.css">
+                                 <styleClass>
+                                    <String fx:value="logout" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                              </Button>
+                              <Button fx:id="payment_btn" layoutY="421.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="36.0" prefWidth="219.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="  Payment">
+                                 <graphic>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="MONEY" size="1.8em" />
+                                 </graphic></Button>
+                              <Button fx:id="cours_btn" layoutX="1.0" layoutY="478.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="36.0" prefWidth="217.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Cours    ">
+                                 <graphic>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="BOOK" size="1.8em" wrappingWidth="40.39999961853027" />
+                                 </graphic>
+                              </Button>
+                              <Label layoutX="60.0" layoutY="576.0" text="Logout" textFill="WHITE">
+                                 <font>
+                                    <Font name="Poppins Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="logout_btn" layoutX="20.0" layoutY="567.0" mnemonicParsing="false" onAction="#logout" prefHeight="38.0" prefWidth="36.0" styleClass="nav-btn-logout" stylesheets="@dashboardDesign.css">
+                                 <graphic>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" size="2em" text="" wrappingWidth="30.285715103149414" />
+                                 </graphic>
+                              </Button>
+                              <FontAwesomeIcon fill="WHITE" glyphName="USER" layoutX="63.0" layoutY="150.0" size="10em" />
+                              <Label fx:id="username" layoutX="73.0" layoutY="180.0" style="-fx-font-family: INTER; -fx-font-weight: Bold;" textFill="WHITE">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Line endX="100.0" layoutX="110.0" layoutY="231.0" startX="-100.0" stroke="WHITE" />
+                           </children>
+                           <styleClass>
+                              <String fx:value="nav" />
+                              <String fx:value="nav-border" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </left>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="back" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane fx:id="members_form" layoutX="44.0" layoutY="35.0" prefHeight="672.0" prefWidth="1092.0" stylesheets="@dashboardDesign.css" visible="false">
+                           <children>
+                              <TableView fx:id="members_tableView" layoutX="97.0" layoutY="71.0" onMouseClicked="#membersSelect" prefHeight="549.0" prefWidth="898.0">
+                                <columns>
+                                  <TableColumn fx:id="members_col_etudiantID" prefWidth="85.0" text="Member ID" />
+                                  <TableColumn fx:id="members_col_name" prefWidth="115.0" text="Nom et prenom" />
+                                    <TableColumn fx:id="members_col_phoneNum" prefWidth="89.0" text="Telephone" />
+                                    <TableColumn fx:id="members_col_niveau" prefWidth="78.0" text="Niveau" />
+                                    <TableColumn fx:id="members_col_Genre" prefWidth="65.0" text="Genre" />
+                                    <TableColumn fx:id="members_col_matiere" prefWidth="78.0" text="Matiere" />
+                                    <TableColumn fx:id="members_col_startDate" prefWidth="86.0" text="Start Date" />
+                                    <TableColumn fx:id="members_col_endDate" prefWidth="83.0" text="End Date" />
+                                    <TableColumn fx:id="members_col_status" prefWidth="65.0" text="Status" />
+                                    <TableColumn fx:id="members_col_tysub" prefWidth="149.0" text="Type de subscription" />
+                                </columns>
+                              </TableView>
+                              <Label layoutX="56.0" layoutY="21.0" text="Etudiants">
+                                 <font>
+                                    <Font name="Poppins Regular" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Line endX="-100.0" endY="25.0" layoutX="146.0" layoutY="22.0" startX="-100.0" stroke="#7aa3e0" strokeWidth="2.0" />
+                              <Button fx:id="ajouter_btn" layoutX="369.0" layoutY="632.0" mnemonicParsing="false" onAction="#showAnchorPane" text="Ajouter">
+                                 <styleClass>
+                                    <String fx:value="btnAjoute" />
+                                    <String fx:value="shadow" />
+                                 </styleClass></Button>
+                              <Button fx:id="clear_btn" layoutX="669.0" layoutY="632.0" mnemonicParsing="false" onAction="#clearTable" text="Clear">
+                                 <styleClass>
+                                    <String fx:value="btnClear" />
+                                    <String fx:value="shadow" />
+                                 </styleClass></Button>
+                              <Button fx:id="suppri_btn" layoutX="556.0" layoutY="632.0" mnemonicParsing="false" onAction="#membersDelete" text="Supprimer">
+                                 <styleClass>
+                                    <String fx:value="btnClear" />
+                                    <String fx:value="shadow" />
+                                 </styleClass></Button>
+                              <Button fx:id="Update_btn" layoutX="461.0" layoutY="632.0" mnemonicParsing="false" onAction="#showmodifier" text="Update">
+                                 <styleClass>
+                                    <String fx:value="btnAjoute" />
+                                    <String fx:value="shadow" />
+                                 </styleClass></Button>
+                              <TextField fx:id="searchTextField" layoutX="721.0" layoutY="16.0" prefHeight="37.0" prefWidth="234.0" promptText="    Search" style="-fx-border-radius: 19; -fx-background-radius: 19; -fx-border-color: #7aa3e0;">
+                                 <font>
+                                    <Font name="Poppins Bold" size="12.0" />
+                                 </font>
+                              </TextField>
+                              <FontAwesomeIcon fill="#7aa3e0" glyphName="SEARCH" layoutX="922.0" layoutY="41.0" size="1.5em" />
+                           </children>
+                           <styleClass>
+                              <String fx:value="eleme1" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </AnchorPane>
+                        <AnchorPane fx:id="cour_form" layoutX="30.0" layoutY="55.0" prefHeight="555.0" prefWidth="880.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="30.0" layoutY="18.0" prefHeight="712.0" prefWidth="526.0" stylesheets="@dashboardDesign.css" AnchorPane.leftAnchor="30.0">
+                                 <styleClass>
+                                    <String fx:value="eleme1" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <Label layoutX="146.0" layoutY="53.0" text="Cour id:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="courID" layoutX="218.0" layoutY="51.0" prefHeight="33.0" prefWidth="218.0" styleClass="textfield" stylesheets="@dashboardDesign.css" />
+                                    <Label layoutX="115.0" layoutY="116.0" prefHeight="27.0" prefWidth="101.0" text="Description:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="173.0" layoutY="245.0" text="Prix:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="addCour" layoutX="123.0" layoutY="320.0" mnemonicParsing="false" onAction="#courAddBtn" prefHeight="43.0" prefWidth="99.0" stylesheets="@dashboardDesign.css" text="Add">
+                                       <styleClass>
+                                          <String fx:value="btn" />
+                                          <String fx:value="shadow" />
+                                       </styleClass></Button>
+                                    <Button fx:id="Updatecour" layoutX="295.0" layoutY="320.0" mnemonicParsing="false" onAction="#CourUpdateBtn" prefHeight="43.0" prefWidth="99.0" stylesheets="@dashboardDesign.css" text="Update">
+                                       <styleClass>
+                                          <String fx:value="btn" />
+                                          <String fx:value="shadow" />
+                                       </styleClass></Button>
+                                    <Button fx:id="clear_table_cour" layoutX="123.0" layoutY="424.0" mnemonicParsing="false" onAction="#clearCour" prefHeight="43.0" prefWidth="99.0" stylesheets="@dashboardDesign.css" text="Clear">
+                                       <styleClass>
+                                          <String fx:value="btn" />
+                                          <String fx:value="shadow" />
+                                       </styleClass></Button>
+                                    <Button fx:id="delete_cour" layoutX="295.0" layoutY="424.0" mnemonicParsing="false" onAction="#courDelete" prefHeight="43.0" prefWidth="99.0" stylesheets="@dashboardDesign.css" text="Delete">
+                                       <styleClass>
+                                          <String fx:value="btn" />
+                                          <String fx:value="shadow" />
+                                       </styleClass></Button>
+                                    <Label layoutX="147.0" layoutY="182.0" text="Niveau:">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox fx:id="cour_niveau" layoutX="218.0" layoutY="178.0" prefHeight="34.0" prefWidth="219.0" promptText="Choose..." styleClass="textfield" stylesheets="@dashboardDesign.css" />
+                                    <TextField fx:id="cour_nom" layoutX="218.0" layoutY="113.0" prefHeight="33.0" prefWidth="218.0" styleClass="textfield" stylesheets="@dashboardDesign.css" />
+                                    <TextField fx:id="prix_nom" layoutX="219.0" layoutY="242.0" prefHeight="33.0" prefWidth="218.0" styleClass="textfield" stylesheets="@dashboardDesign.css" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="593.0" layoutY="21.0" prefHeight="709.0" prefWidth="564.0" stylesheets="@dashboardDesign.css">
+                                 <styleClass>
+                                    <String fx:value="eleme1" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <TableView fx:id="cour_tableView" layoutX="39.0" layoutY="17.0" onMouseClicked="#courselect" prefHeight="670.0" prefWidth="489.0">
+                                      <columns>
+                                        <TableColumn fx:id="cour_col_coruID" prefWidth="104.0" text="Cour ID" />
+                                        <TableColumn fx:id="cour_col_courname" prefWidth="169.0" text="Description" />
+                                          <TableColumn fx:id="cour_col_niveau" prefWidth="100.0" text="Niveau" />
+                                          <TableColumn fx:id="cour_col_prix" prefWidth="111.0" text="Prix" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="payment_Form" prefHeight="555.0" prefWidth="880.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane prefHeight="523.0" prefWidth="543.0" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="323.0" AnchorPane.topAnchor="16.0">
+                                 <children>
+                                    <TableView fx:id="payment_tableView" layoutX="14.0" layoutY="16.0" prefHeight="492.0" prefWidth="515.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="16.0">
+                                      <columns>
+                                        <TableColumn fx:id="payment_col_customerID" prefWidth="107.0" text="Customer ID" />
+                                        <TableColumn fx:id="payment_col_name" prefWidth="183.0" text="Name" />
+                                          <TableColumn fx:id="payment_col_startDate" prefWidth="139.0" text="Start Date" />
+                                          <TableColumn fx:id="payment_col_endDate" prefWidth="149.0" text="End Date" />
+                                          <TableColumn fx:id="payment_col_Typesubs" minWidth="0.0" prefWidth="142.0" text="Type de subscription" />
+                                          <TableColumn fx:id="payment_col_status" prefWidth="87.0" text="Status" />
+                                      </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </TableView>
+                                 </children>
+                                 <styleClass>
+                                    <String fx:value="eleme1" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                              </AnchorPane>
+                              <AnchorPane layoutX="867.0" layoutY="17.0" prefHeight="522.0" prefWidth="293.0" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="17.0">
+                                 <styleClass>
+                                    <String fx:value="eleme1" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <Label layoutX="38.0" layoutY="29.0" text="Customer ID:">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox fx:id="payment_customerID" layoutX="133.0" layoutY="27.0" onAction="#paymentMemberId" prefWidth="150.0" promptText="Choose..." styleClass="textfield" stylesheets="@dashboardDesign.css" />
+                                    <Label layoutX="14.0" layoutY="72.0" text="Nom et prenom:">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox fx:id="payment_name" layoutX="133.0" layoutY="70.0" onAction="#paymentName" prefWidth="150.0" promptText="Choose..." styleClass="textfield" stylesheets="@dashboardDesign.css" />
+                                    <Label layoutX="63.0" layoutY="285.0" text="Total:" textFill="#fe4141">
+                                       <font>
+                                          <Font name="Poppins Bold" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="payment_total" layoutX="152.0" layoutY="285.0" prefHeight="35.0" prefWidth="134.0" text="\$0.0" textFill="#fe4141">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="69.0" layoutY="322.0" text="Amount:" visible="false">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="payment_amount" layoutX="135.0" layoutY="320.0" promptText="\$0.0" styleClass="textfield" stylesheets="@dashboardDesign.css" visible="false" />
+                                    <Button fx:id="payment_payBtn" layoutX="14.0" layoutY="411.0" mnemonicParsing="false" onAction="#paymentPayBtn" prefHeight="44.0" prefWidth="266.0" stylesheets="@dashboardDesign.css" text="Payer">
+                                       <styleClass>
+                                          <String fx:value="btn" />
+                                          <String fx:value="shadow" />
+                                       </styleClass></Button>
+                                    <Label layoutX="71.0" layoutY="118.0" text="Matiere:" visible="false">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox fx:id="payment_name1" layoutX="133.0" layoutY="116.0" onAction="#paymentName" prefWidth="150.0" promptText="Choose..." styleClass="textfield" stylesheets="@dashboardDesign.css" visible="false" />
+                                    <Label layoutX="73.0" layoutY="163.0" text="Niveau:" visible="false">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox fx:id="payment_name11" layoutX="133.0" layoutY="161.0" onAction="#paymentName" prefWidth="150.0" promptText="Choose..." styleClass="textfield" stylesheets="@dashboardDesign.css" visible="false" />
+                                    <Label layoutX="11.0" layoutY="205.0" text="Type de subscription:" visible="false">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox fx:id="payment_name111" layoutX="161.0" layoutY="203.0" onAction="#paymentName" prefHeight="25.0" prefWidth="122.0" promptText="Choose..." styleClass="textfield" stylesheets="@dashboardDesign.css" visible="false" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="dashboard_form" layoutX="143.0" layoutY="126.0" prefHeight="555.0" prefWidth="880.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="89.0" layoutY="39.0" prefHeight="140.0" prefWidth="285.0" stylesheets="@dashboardDesign.css">
+                                 <children>
+                                    <Label fx:id="dashboardTC" alignment="CENTER_RIGHT" layoutX="14.0" layoutY="82.0" prefHeight="44.0" prefWidth="258.0" text="0" textFill="#7aa3e0">
+                                       <font>
+                                          <Font name="Inter Bold" size="35.0" />
+                                       </font>
+                                    </Label>
+                                    <FontAwesomeIcon fill="#ff6161" glyphName="USER" layoutX="247.0" layoutY="47.0" size="3em" text="" wrappingWidth="23.14285659790039" />
+                                    <Label layoutX="14.0" layoutY="23.0" text="Nombres des ensignant" textFill="#7aa3e0">
+                                       <font>
+                                          <Font name="Poppins Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <styleClass>
+                                    <String fx:value="eleme1" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                              </AnchorPane>
+                              <AreaChart fx:id="dashboard_incomeChart" layoutX="82.0" layoutY="259.0" prefHeight="399.0" prefWidth="463.0" stylesheets="@dashboardDesign.css" title="Stundents number Data Chart">
+                                 <xAxis>
+                                    <CategoryAxis side="BOTTOM" />
+                                 </xAxis>
+                                 <yAxis>
+                                    <NumberAxis side="LEFT" />
+                                 </yAxis>
+                                 <styleClass>
+                                    <String fx:value="eleme1" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                              </AreaChart>
+                              <AreaChart fx:id="dashboard_incomeChart1" layoutX="626.0" layoutY="262.0" prefHeight="401.0" prefWidth="459.0" stylesheets="@dashboardDesign.css" title="Income Data Chart">
+                                 <xAxis>
+                                    <CategoryAxis side="BOTTOM" />
+                                 </xAxis>
+                                 <yAxis>
+                                    <NumberAxis side="LEFT" />
+                                 </yAxis>
+                                 <styleClass>
+                                    <String fx:value="eleme1" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                              </AreaChart>
+                              <AnchorPane layoutX="437.0" layoutY="39.0" prefHeight="140.0" prefWidth="285.0" stylesheets="@dashboardDesign.css">
+                                 <children>
+                                    <Label fx:id="dashboardTI" alignment="CENTER_RIGHT" layoutX="14.0" layoutY="82.0" prefHeight="44.0" prefWidth="254.0" text="0" textFill="#7aa3e0">
+                                       <font>
+                                          <Font name="Inter Bold" size="35.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="14.0" layoutY="23.0" text="Revenu Totale" textFill="#7aa3e0">
+                                       <font>
+                                          <Font name="Poppins Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <FontAwesomeIcon fill="#5396f5" glyphName="MONEY" layoutX="234.0" layoutY="47.0" size="3em" />
+                                 </children>
+                                 <styleClass>
+                                    <String fx:value="eleme1" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                              </AnchorPane>
+                              <AnchorPane layoutX="784.0" layoutY="39.0" prefHeight="140.0" prefWidth="285.0" stylesheets="@dashboardDesign.css">
+                                 <children>
+                                    <Label fx:id="dashboardNM" alignment="CENTER_RIGHT" layoutX="14.0" layoutY="82.0" prefHeight="44.0" prefWidth="249.0" text="0" textFill="#7aa3e0">
+                                       <font>
+                                          <Font name="Inter Bold" size="35.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="14.0" layoutY="23.0" text="Nombres des etudiants" textFill="#7aa3e0">
+                                       <font>
+                                          <Font name="Poppins Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <FontAwesomeIcon fill="#fff533" glyphName="USERS" layoutX="232.0" layoutY="47.0" size="3em" />
+                                 </children>
+                                 <styleClass>
+                                    <String fx:value="eleme1" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="AddEtudiant_Form" accessibleRole="COMBO_BOX" layoutX="155.0" layoutY="166.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0" prefWidth="782.0" style="-fx-background-color: white;" visible="false">
+                           <children>
+                              <Label layoutX="45.0" layoutY="15.0" text="Ajouter Etudiant">
+                                 <font>
+                                    <Font name="Poppins Regular" size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="Etudiant_nom" layoutX="106.0" layoutY="70.0" prefHeight="15.0" prefWidth="130.0" style="-fx-background-radius: 5;" />
+                              <Text layoutX="14.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom etudiant :" />
+                              <TextField fx:id="Etudiant_ID" layoutX="106.0" layoutY="125.0" prefHeight="15.0" prefWidth="130.0" style="-fx-background-radius: 5;" />
+                              <Text layoutX="14.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EtudiantID      :" />
+                              <TextField fx:id="Etudiant_Tele" layoutX="360.0" layoutY="70.0" prefHeight="15.0" prefWidth="130.0" style="-fx-background-radius: 5;" />
+                              <Text layoutX="274.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telephone :" />
+                              <Text layoutX="274.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender      :" />
+                              <Text layoutX="274.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statue       :" />
+                              <Text layoutX="274.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Niveau      :" />
+                              <Text layoutX="503.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type de subscription :" />
+                              <DatePicker fx:id="Etudiant_DateDebut" layoutX="628.0" layoutY="117.0" prefHeight="15.0" prefWidth="130.0" promptText="12-10-2023" />
+                              <Text layoutX="537.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de debut :" />
+                              <DatePicker fx:id="Etudiant_DateFin" layoutX="628.0" layoutY="165.0" prefHeight="15.0" prefWidth="130.0" promptText="12-01-2024" />
+                              <Text layoutX="554.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de fin :" />
+                              <Text layoutX="554.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matière :" />
+                              <Button fx:id="Add_Etudiant" graphicTextGap="15.0" layoutX="360.0" layoutY="293.0" mnemonicParsing="false" onAction="#membersAddBtn" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: #18E485; -fx-background-radius: 10;" text="Ajouter" />
+                              <Button fx:id="Annule_btn" graphicTextGap="15.0" layoutX="446.0" layoutY="293.0" mnemonicParsing="false" onAction="#closeAnchorPane" prefHeight="25.0" prefWidth="64.0" style="-fx-background-radius: 10; -fx-background-color: FF0101;" text="Annuler" />
+                              <Line endX="-100.0" endY="25.0" layoutX="131.0" layoutY="17.0" startX="-100.0" stroke="#7aa3e0" strokeWidth="2.0" />
+                              <ComboBox fx:id="Etudiant_genre" layoutX="359.0" layoutY="126.0" prefHeight="25.0" prefWidth="133.0" />
+                              <ComboBox fx:id="Etudiant_Statue" layoutX="358.0" layoutY="174.0" prefHeight="25.0" prefWidth="133.0" />
+                              <ComboBox fx:id="Etudiant_niveau" layoutX="359.0" layoutY="223.0" prefHeight="25.0" prefWidth="133.0" />
+                              <ComboBox fx:id="Etudiant_typesub" layoutX="627.0" layoutY="70.0" prefHeight="25.0" prefWidth="133.0" />
+                              <ComboBox fx:id="Etudiant_Matiere" layoutX="627.0" layoutY="211.0" prefHeight="25.0" prefWidth="133.0" />
+                           </children>
+                           <styleClass>
+                              <String fx:value="eleme1" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </AnchorPane>
+                        <AnchorPane fx:id="ensiegnant_form" layoutX="54.0" layoutY="45.0" prefHeight="672.0" prefWidth="1092.0" stylesheets="@dashboardDesign.css" visible="false">
+                           <children>
+                              <TableView fx:id="enseignat_tableView" layoutX="158.0" layoutY="71.0" onMouseClicked="#enseignantSelect" prefHeight="549.0" prefWidth="777.0">
+                                 <columns>
+                                    <TableColumn fx:id="Enseignant_id" prefWidth="123.0" text="EnsignantID" />
+                                    <TableColumn fx:id="Enseignant_nom" prefWidth="169.0" text="Nom et prenom" />
+                                    <TableColumn fx:id="Eneignant_telaphone" minWidth="0.0" prefWidth="124.0" text="Telephone" />
+                                    <TableColumn fx:id="Enseignant_niveau" prefWidth="128.0" text="Niveau" />
+                                    <TableColumn fx:id="Enseignant_genre" prefWidth="103.0" text="Genre" />
+                                    <TableColumn fx:id="Enseignant_matiere" prefWidth="127.0" text="Matiere" />
+                                 </columns>
+                              </TableView>
+                              <Label layoutX="56.0" layoutY="21.0" text="Enseignant">
+                                 <font>
+                                    <Font name="Poppins Regular" size="20.0" />
+                                 </font>
+                              </Label>
+                              <Line endX="-100.0" endY="25.0" layoutX="146.0" layoutY="22.0" startX="-100.0" stroke="#7aa3e0" strokeWidth="2.0" />
+                              <Button fx:id="ajouter_btn1" layoutX="369.0" layoutY="632.0" mnemonicParsing="false" onAction="#showAnchorPaneEnseig" styleClass="btnAjoute" text="Ajouter" />
+                              <Button fx:id="clear_btn1" layoutX="669.0" layoutY="632.0" mnemonicParsing="false" onAction="#clearEnseignantTable" styleClass="btnClear" text="Clear" />
+                              <Button fx:id="suppri_btn1" layoutX="556.0" layoutY="632.0" mnemonicParsing="false" onAction="#enseignantDelete" styleClass="btnClear" text="Supprimer" />
+                              <Button fx:id="Update_btn1" layoutX="461.0" layoutY="632.0" mnemonicParsing="false" onAction="#showmodifierEnseignant" styleClass="btnAjoute" text="Update" />
+                              <TextField fx:id="searchTextField1" layoutX="721.0" layoutY="16.0" prefHeight="37.0" prefWidth="234.0" promptText="     Search" style="-fx-border-radius: 19; -fx-background-radius: 19; -fx-border-color: #7aa3e0;">
+                                 <font>
+                                    <Font name="Poppins Bold" size="12.0" />
+                                 </font>
+                              </TextField>
+                              <FontAwesomeIcon fill="#7aa3e0" glyphName="SEARCH" layoutX="918.0" layoutY="41.0" size="1.5em" />
+                           </children>
+                           <styleClass>
+                              <String fx:value="eleme1" />
+                              <String fx:value="shadow" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </AnchorPane>
+                        <AnchorPane fx:id="AddEnseignant_form" accessibleRole="COMBO_BOX" layoutX="165.0" layoutY="176.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0" prefWidth="782.0" style="-fx-background-color: white;" visible="false">
+                           <children>
+                              <Label layoutX="45.0" layoutY="15.0" text="Ajouter Enseignant">
+                                 <font>
+                                    <Font name="Poppins Regular" size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="Text_Enseignant_nom" layoutX="206.0" layoutY="74.0" prefHeight="15.0" prefWidth="130.0" style="-fx-background-radius: 5;" />
+                              <Text layoutX="106.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom enseignant :" />
+                              <TextField fx:id="Text_Enseignant_ID" layoutX="206.0" layoutY="129.0" prefHeight="15.0" prefWidth="130.0" style="-fx-background-radius: 5;" />
+                              <Text layoutX="114.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EnseignantID :" />
+                              <TextField fx:id="text_enseignant_tele" layoutX="548.0" layoutY="70.0" prefHeight="15.0" prefWidth="130.0" style="-fx-background-radius: 5;" />
+                              <Text layoutX="462.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telephone :" />
+                              <Text layoutX="462.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender      :" />
+                              <Text layoutX="462.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matiere :" />
+                              <Text layoutX="124.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Niveau      :" />
+                              <Button fx:id="Ajouter_btn_enseignat" graphicTextGap="15.0" layoutX="310.0" layoutY="293.0" mnemonicParsing="false" onAction="#enseignantAddBtn" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: #18E485; -fx-background-radius: 10;" text="Ajouter" />
+                              <Button fx:id="Annule_btn_enseignat" graphicTextGap="15.0" layoutX="410.0" layoutY="293.0" mnemonicParsing="false" onAction="#closeAnchorPaneEnseig" prefHeight="25.0" prefWidth="64.0" style="-fx-background-radius: 10; -fx-background-color: FF0101;" text="Annuler" />
+                              <Line endX="-100.0" endY="25.0" layoutX="131.0" layoutY="17.0" startX="-100.0" stroke="#7aa3e0" strokeWidth="2.0" />
+                              <ComboBox fx:id="choix_Enseignant_gender" layoutX="547.0" layoutY="126.0" prefHeight="25.0" prefWidth="133.0" />
+                              <ComboBox fx:id="choix_Enseignant_matiere" layoutX="546.0" layoutY="174.0" prefHeight="25.0" prefWidth="133.0" />
+                              <ComboBox fx:id="choix_Enseignant_niveau" layoutX="209.0" layoutY="174.0" prefHeight="25.0" prefWidth="133.0" />
+                           </children>
+                           <styleClass>
+                              <String fx:value="eleme1" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </AnchorPane>
+                        <AnchorPane fx:id="ModifierEtudiant_Form" accessibleRole="COMBO_BOX" layoutX="165.0" layoutY="176.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0" prefWidth="782.0" style="-fx-background-color: white;" visible="false">
+                           <children>
+                              <Label layoutX="45.0" layoutY="15.0" text="Modifier Etudiant">
+                                 <font>
+                                    <Font name="Poppins Regular" size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="Etudiant_nom1" layoutX="106.0" layoutY="70.0" prefHeight="15.0" prefWidth="130.0" style="-fx-background-radius: 5;" />
+                              <Text layoutX="14.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom etudiant :" />
+                              <TextField fx:id="Etudiant_ID1" layoutX="106.0" layoutY="125.0" prefHeight="15.0" prefWidth="130.0" style="-fx-background-radius: 5;" />
+                              <Text layoutX="14.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EtudiantID      :" />
+                              <TextField fx:id="Etudiant_Tele1" layoutX="360.0" layoutY="70.0" prefHeight="15.0" prefWidth="130.0" style="-fx-background-radius: 5;" />
+                              <Text layoutX="274.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telephone :" />
+                              <Text layoutX="274.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender      :" />
+                              <Text layoutX="274.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statue       :" />
+                              <Text layoutX="274.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Niveau      :" />
+                              <Text layoutX="503.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type de subscription :" />
+                              <DatePicker fx:id="Etudiant_DateDebut1" layoutX="628.0" layoutY="117.0" prefHeight="15.0" prefWidth="130.0" promptText="12-10-2023" />
+                              <Text layoutX="537.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de debut :" />
+                              <DatePicker fx:id="Etudiant_DateFin1" layoutX="628.0" layoutY="165.0" prefHeight="15.0" prefWidth="130.0" promptText="12-01-2024" />
+                              <Text layoutX="554.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de fin :" />
+                              <Text layoutX="554.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matière :" />
+                              <Button fx:id="Add_Etudiant1" graphicTextGap="15.0" layoutX="304.0" layoutY="293.0" mnemonicParsing="false" onAction="#membersUpdate" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: #18E485; -fx-background-radius: 10;" text="Update" />
+                              <Button fx:id="Annule_btn1" graphicTextGap="15.0" layoutX="409.0" layoutY="293.0" mnemonicParsing="false" onAction="#closemodifier" prefHeight="25.0" prefWidth="64.0" style="-fx-background-radius: 10; -fx-background-color: FF0101;" text="Annuler" />
+                              <Line endX="-100.0" endY="25.0" layoutX="131.0" layoutY="17.0" startX="-100.0" stroke="#7aa3e0" strokeWidth="2.0" />
+                              <ComboBox fx:id="Etudiant_genre1" layoutX="359.0" layoutY="126.0" prefHeight="25.0" prefWidth="133.0" />
+                              <ComboBox fx:id="Etudiant_Statue1" layoutX="358.0" layoutY="174.0" prefHeight="25.0" prefWidth="133.0" />
+                              <ComboBox fx:id="Etudiant_niveau1" layoutX="359.0" layoutY="223.0" prefHeight="25.0" prefWidth="133.0" />
+                              <ComboBox fx:id="Etudiant_typesub1" layoutX="627.0" layoutY="70.0" prefHeight="25.0" prefWidth="133.0" />
+                              <ComboBox fx:id="Etudiant_Matiere1" layoutX="627.0" layoutY="211.0" prefHeight="25.0" prefWidth="133.0" />
+                           </children>
+                           <styleClass>
+                              <String fx:value="eleme1" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </AnchorPane>
+                        <AnchorPane fx:id="ModifierEnseignant_Form" accessibleRole="COMBO_BOX" layoutX="175.0" layoutY="186.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0" prefWidth="782.0" style="-fx-background-color: white;" visible="false">
+                           <children>
+                              <Label layoutX="45.0" layoutY="15.0" text="Modifier Enseignant">
+                                 <font>
+                                    <Font name="Poppins Regular" size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="Text_Enseignant_nom1" layoutX="206.0" layoutY="74.0" prefHeight="15.0" prefWidth="130.0" style="-fx-background-radius: 5;" />
+                              <Text layoutX="106.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom enseignant :" />
+                              <TextField fx:id="Text_Enseignant_ID1" layoutX="206.0" layoutY="129.0" prefHeight="15.0" prefWidth="130.0" style="-fx-background-radius: 5;" />
+                              <Text layoutX="114.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EnseignantID :" />
+                              <TextField fx:id="text_enseignant_tele1" layoutX="548.0" layoutY="70.0" prefHeight="15.0" prefWidth="130.0" style="-fx-background-radius: 5;" />
+                              <Text layoutX="462.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telephone :" />
+                              <Text layoutX="462.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender      :" />
+                              <Text layoutX="462.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matiere :" />
+                              <Text layoutX="124.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Niveau      :" />
+                              <Button fx:id="Ajouter_btn_enseignat1" graphicTextGap="15.0" layoutX="310.0" layoutY="293.0" mnemonicParsing="false" onAction="#enseignantUpdate" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: #18E485; -fx-background-radius: 10;" text="Update" />
+                              <Button fx:id="Annule_btn_enseignat1" graphicTextGap="15.0" layoutX="410.0" layoutY="293.0" mnemonicParsing="false" onAction="#closemodifier1" prefHeight="25.0" prefWidth="64.0" style="-fx-background-radius: 10; -fx-background-color: FF0101;" text="Annuler" />
+                              <Line endX="-100.0" endY="25.0" layoutX="131.0" layoutY="17.0" startX="-100.0" stroke="#7aa3e0" strokeWidth="2.0" />
+                              <ComboBox fx:id="choix_Enseignant_gender1" layoutX="547.0" layoutY="126.0" prefHeight="25.0" prefWidth="133.0" />
+                              <ComboBox fx:id="choix_Enseignant_matiere1" layoutX="546.0" layoutY="174.0" prefHeight="25.0" prefWidth="133.0" />
+                              <ComboBox fx:id="choix_Enseignant_niveau1" layoutX="209.0" layoutY="174.0" prefHeight="25.0" prefWidth="133.0" />
+                           </children>
+                           <styleClass>
+                              <String fx:value="eleme1" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
